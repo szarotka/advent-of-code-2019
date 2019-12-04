@@ -8,9 +8,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Task2 {
+
+    public void searchParams(String filePath) {
+
+        IntStream.range(0, 99).forEach(
+                v1 ->
+                        IntStream.range(0, 99)
+                                .forEach(v2 -> {
+                                    List<Integer> values = readFile(filePath);
+                                    values.set(1, v1);
+                                    values.set(2, v2);
+
+                                    values = changeValues(values);
+
+                                    if (values.get(0).equals(Integer.valueOf("19690720"))) {
+                                        Integer result = 100 * v1 + v2;
+                                        System.out.println(String.format("Result %d: v1: %d v2: %d, sum: %d", values.get(0), v1, v2, result));
+                                        return;
+                                    }
+                                })
+        );
+    }
 
     public void calculate(String filePath) {
         List<Integer> values = readFile(filePath);

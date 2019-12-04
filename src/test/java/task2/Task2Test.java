@@ -34,4 +34,11 @@ class Task2Test {
         assertEquals(expected, result);
     }
 
+    @Test
+    void searchParams() {
+        String filePath = "src/test/resources/task2/task2.txt";
+        Task2 task2 = new Task2();
+        task2.searchParams(filePath);
+    }
+
 }
